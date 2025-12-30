@@ -1,64 +1,230 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 📘 Proyecto Gestión de Empleados – Prueba Backend Grupo Alianza
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto corresponde a una **aplicación backend + frontend en Laravel** desarrollada como parte de una prueba técnica. El objetivo principal es gestionar empleados y cargos (crear, listar, editar y eliminar) utilizando **buenas prácticas**, componentes reutilizables y una arquitectura clara.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🧱 Stack Tecnológico
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Laravel 10+**
+- **PHP 8.1+**
+- **SQLite** (base de datos local)
+- **Blade Components**
+- **Alpine.js** (interactividad frontend)
+- **TailwindCSS** (estilos)
+- **FontAwesome** (iconos)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🎯 Funcionalidades Implementadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 👤 Gestión de Empleados
+#### Versión 1
+- Crear empleados mediante modal reutilizable
+- Editar empleados usando el mismo modal
+- Listado dinámico en tabla con componente reutilizable
+- Eliminación con confirmación
+- Validaciones backend
+- Mensajes flash (toast) de éxito y error
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🧩 Componentes Blade
+- `floating-table`: tabla dinámica reutilizable
+- `modal`: modal único reutilizado para crear y editar
+- Componentes desacoplados y configurables por props
 
-## Laravel Sponsors
+### ⚡ Interactividad
+- Manejo de estado con Alpine.js
+- Comunicación entre componentes usando `$dispatch`
+- Apertura de modal en modo **create** o **edit**
+- Carga dinámica de datos en modo edición
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+---
 
-### Premium Partners
+## 🗂️ Estructura del Proyecto
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
+resources/
+├── views/
+│   ├── employees/
+│   │   └── index.blade.php
+│   ├── components/
+│   │   ├── floating-table.blade.php
+│   │   └── modal.blade.php
+│   └── layouts/
+│       └── app.blade.php
 
-## Contributing
+app/
+├── Http/Controllers/
+│   └── EmployeeController.php
+|   └── RoleController.php
+├── Models/
+│   └── Employee.php
+├── Models/User.php
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+database/
+├── migrations/
+├── seeders/
+│   └── UserSeeder.php
+```
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🚀 Instalación y Setup
 
-## Security Vulnerabilities
+### 1️⃣ Clonar el repositorio
+```bash
+git clone <repositorio>
+cd alianza-nomina
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2️⃣ Instalar dependencias
+```bash
+composer install
+npm install
+npm run build
+```
 
-## License
+### 3️⃣ Configurar entorno
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 4️⃣ Base de datos (SQLite)
+
+Crear el archivo:
+```bash
+touch database/database.sqlite
+```
+
+Configurar `.env`:
+```
+DB_CONNECTION=sqlite
+DB_DATABASE=/ruta/absoluta/database/database.sqlite
+```
+
+---
+
+## 🧬 Migraciones y Seeds
+
+### Ejecutar migraciones
+```bash
+php artisan migrate
+```
+
+### Ejecutar seeders
+```bash
+php artisan db:seed
+```
+
+O específicamente:
+```bash
+php artisan db:seed --class=UserSeeder
+```
+
+---
+
+## 👨‍💻 Seeder de Usuario
+
+Se creó un **usuario inicial** para pruebas:
+
+```php
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder
+{
+    public function run(): void
+    {
+        User::create([
+            'name' => 'Pruebadesarrollador',
+            'email' => 'prueba@desarrollador.com',
+            'password' => Hash::make('12345678'),
+        ]);
+    }
+}
+```
+
+🔐 **Credenciales**:
+- Usuario: `Pruebadesarrollador`
+- Password: `12345678`
+
+---
+
+## 🧠 Decisiones Clave de Arquitectura
+
+### ✅ Modal Reutilizable
+Se decidió usar **un solo modal** para crear y editar empleados:
+- Se controla con una variable `mode` (`create` | `edit`)
+- Reduce duplicación de código
+- Mejora mantenibilidad
+
+### ✅ Alpine.js sobre Livewire
+- Menor complejidad
+- Suficiente para interacciones requeridas
+- Ideal para pruebas técnicas
+
+### ✅ Componentización de la Tabla
+- `floating-table` permite:
+  - Reutilización
+  - Columnas dinámicas
+  - Acciones configurables
+
+### ✅ Validaciones en Backend
+- Seguridad y consistencia de datos
+- Manejo de errores por sesión
+
+### ✅ SQLite
+- Rápida configuración
+- Ideal para pruebas técnicas
+- Sin dependencias externas
+
+---
+
+## ⚠️ Consideraciones Importantes
+
+### Identificación única (SQLite)
+Si un empleado se elimina lógicamente o manualmente, SQLite puede mantener restricciones únicas.
+
+Para limpiar completamente:
+```bash
+php artisan migrate:fresh --seed
+```
+
+---
+
+## 🧪 Flujo de Creación / Edición
+
+1. Click en **Nuevo Empleado** → abre modal en modo `create`
+2. Submit → `employees.store`
+3. Validación → creación → redirect → toast
+4. Click en **Editar** → `$dispatch('edit-employee', data)`
+5. Modal se abre en modo `edit` con datos cargados
+6. Submit → `employees.update`
+
+---
+
+## 📌 Próximas Mejoras (Opcional)
+
+- Paginación
+- Búsqueda backend
+- Soft deletes visibles
+- Tests unitarios
+- Autorización por roles
+
+---
+
+## 👨‍💻 Autor
+
+**Brian Rincon**  
+Desarrollador Web / Ingeniero Mecatrónico
+
+---
+
+✅ Proyecto desarrollado cumpliendo los requisitos solicitados en la prueba técnica, aplicando buenas prácticas, claridad en el código y documentación completa.
+
