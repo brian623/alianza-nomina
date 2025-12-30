@@ -2,7 +2,26 @@
 
 @section('content')
 <!-- Main Content -->
-<div class="flex-1 flex flex-col">
+<div class="flex-1 flex flex-col"     
+    x-data="{
+      openModal: false,
+      mode: 'create', // create | edit
+      employee: {
+          first_name: '',
+          last_name: '',
+          identification: '',
+          phone: '',
+          department_id: '',
+          city_id: '',
+          address: ''
+      }
+    }"
+
+    @edit-employee.window="
+      mode = 'edit';
+      employee = $event.detail;
+      openModal = true;
+    ">
 
   <!-- Área de Contenido Principal -->
   <main class="flex-1 relative flex items-center justify-center bg-white overflow-hidden">
@@ -14,7 +33,20 @@
       <p class="text-gray-500 mt-4 text-lg">Añade los datos personales de tus empleados y después agrega su cargo en tu empresa</p>
 
       <!-- Botón CTA -->
-      <button  @click="open = true" class="mt-6 inline-flex flex-col items-center justify-center p-6 bg-blue-100 hover:bg-blue-200 rounded-xl cursor-pointer">
+      <button   
+        @click="
+          mode = 'create';
+          employee = {
+              first_name: '',
+              last_name: '',
+              identification: '',
+              phone: '',
+              department_id: '',
+              city_id: '',
+              address: ''
+          };
+          openModal = true;
+        " class="mt-6 inline-flex flex-col items-center justify-center p-6 bg-blue-100 hover:bg-blue-200 rounded-xl cursor-pointer">
         <i class="fas fa-user-plus text-3xl text-blue-500 mb-2"></i>
         <span class="text-gray-400 text-sm">Empieza aquí</span>
       </button>
@@ -26,7 +58,7 @@
           class="absolute bottom-0 right-0 w-64 h-64 opacity-80 pointer-events-none">
     
     <!-- MODAL -->
-    @include('components.create-modal')
+    <x-create-modal/>
   </main>
 
 </div>

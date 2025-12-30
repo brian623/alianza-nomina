@@ -17,7 +17,7 @@
 
     @stack('styles')
 </head>
-<body class="h-screen flex overflow-hidden bg-gray-100">
+<body class="h-screen flex overflow-hidden">
 
     <!-- Sidebar -->
     @php $activePage = $activePage ?? 'dashboard'; @endphp
@@ -37,5 +37,6 @@
     </div>
 
     @stack('scripts')
+    <script src="//unpkg.com/alpinejs" defer></script>
 </body>
 </html>

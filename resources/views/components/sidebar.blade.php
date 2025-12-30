@@ -17,8 +17,8 @@
                 <i class="fas fa-chevron-up"></i>
             </div>
             <div class="flex flex-col mt-2 space-y-1">
-                <a href="{{ route('empleados.index') }}" class="px-6 py-2 rounded hover:bg-blue-600 {{ $activePage=='empleados' ? 'bg-blue-800' : '' }}">Empleados</a>
-                <a href="{{ route('cargos.index') }}" class="px-6 py-2 rounded hover:bg-blue-600 {{ $activePage=='cargos' ? 'bg-blue-800' : '' }}">Cargos</a>
+                <a href="{{ route('employees.index') }}" class="px-6 py-2 rounded hover:bg-blue-600 {{ $activePage=='empleados' ? 'bg-blue-800' : '' }}">Empleados</a>
+                <a href="{{ route('roles.index') }}" class="px-6 py-2 rounded hover:bg-blue-600 {{ $activePage=='cargos' ? 'bg-blue-800' : '' }} ">Cargos</a>
             </div>
         </div>
     </nav>

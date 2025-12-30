@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmpleadoController;
-use App\Http\Controllers\CargoController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Auth\LoginController;
 
 // ------------------------
@@ -18,7 +18,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // ------------------------
 Route::middleware(['auth'])->group(function () {
 
-    // Dashboard = Home
+    // Dashboard = Home 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Empleados
@@ -27,7 +27,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/employees', [EmployeeController::class, 'store'])
         ->name('employees.store');
+    Route::put('/employees/{employee}', [EmployeeController::class, 'update'])
+        ->name('employees.update');
+    Route::delete('/employees/bulk-delete', [EmployeeController::class, 'bulkDelete'])
+        ->name('employees.bulkDelete');
+    Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy'])
+        ->name('employees.destroy');
 
     // Cargos
-    Route::get('/cargos', [CargoController::class, 'index'])->name('cargos.index');
+    Route::get('/cargos', [RoleController::class, 'index'])->name('roles.index');
 });
